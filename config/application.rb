@@ -19,7 +19,6 @@ module Projects
       g.test_framework :rspec,
         view_specs: false,
         fixtures: false,        
-	view_specs: false,
 	helper_specs: false,
         routing_specs: false
     end
