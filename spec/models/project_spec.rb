@@ -61,7 +61,12 @@ RSpec.describe Project, type: :model do
 
     it 'is on time when the due date is in the future' do
       project = FactoryBot.create(:project, :due_tomorrow)
-      expect(project).to_not be_last
+      expect(project).to_not be_late
     end
+  end
+
+  it 'can have many notes' do
+    project = FactoryBot.create(:project, :with_notes)
+    expect(project.notes.length).to eq 5
   end
 end
