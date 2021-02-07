@@ -6,11 +6,11 @@ module RequestSpecHelper
 		base.after(:each) { Warden.test_reset!}
 	end
 
-	def sign_in(request)
+	def sign_in(resource)
 		login_as(resource, scope: warden_scope(resource))
 	end
 
-	def sign_out(request)
+	def sign_out(resource)
 		logout(warden_scope(resource))
 	end
 
