@@ -29,4 +29,11 @@ RSpec.describe User, type: :model do
   it { is_expected.to validate_presence_of :last_name }
   it { is_expected.to validate_presence_of :email }
   it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
+
+  it 'performs geocoding', vcr: true do
+    user = FactoryBot.create(:user, last_sign_in_ip: '161.185.207.20')
+    expect {
+      user.geocode
+    }.to change(user, :location).from(nil).to('New York City, New York, US')
+  end
 end
